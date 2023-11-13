@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Monster Energy Progress Bar",
+  "version": "1.0",
+  "description": "A fun Monster Energy-themed progress bar for your browser.",
+  "permissions": ["webRequest", "webRequestBlocking", "activeTab", "<all_urls>"],
+  "browser_action": {
+    "default_icon": "assets/logo.png",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "assets/monster1.png"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
