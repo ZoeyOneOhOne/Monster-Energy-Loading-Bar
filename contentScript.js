@@ -15,24 +15,38 @@ function addProgressBar() {
   const progressBar = document.createElement("div");
   progressBar.id = "monster-energy-bar";
   progressBar.style.position = "fixed";
-  progressBar.style.top = "100px";
+  progressBar.style.top = "50px";
   progressBar.style.left = "100px";
   progressBar.style.width = "100px";
   progressBar.style.height = "100px";
-  progressBar.style.background = `url('${chrome.runtime.getURL('assets/monster1.png')}') repeat-x`;
+
+  // Array of image filenames
+  const imageFilenames = ['monster1.png', 'mango-loco.png', 'zero.png', 'pipeline-punch.png'];
+  
+  // Randomly choose an image from the array
+  const randomImageFilename = imageFilenames[Math.floor(Math.random() * imageFilenames.length)];
+  console.log('Randomly selected image URL:', randomImageFilename);
+  progressBar.style.background = `url('${chrome.runtime.getURL(`/assets/${randomImageFilename}`)}') repeat-x`;
+  progressBar.style.backgroundSize = "contain"; // Ensure the entire image is visible
+  progressBar.style.transform = "rotate(90deg)";
   document.body.appendChild(progressBar);
 
-  let width = 0;
+  let startTime = performance.now(); // Record the start time
+  let position = -100; // Initial position outside the visible area
   const interval = setInterval(function () {
-    if (width >= 100) {
+    const elapsedTime = performance.now() - startTime; // Calculate elapsed time
+    const speed = window.innerWidth / elapsedTime; // Adjust speed dynamically
+
+    if (position >= window.innerWidth) {
       clearInterval(interval);
       progressBar.remove();
       console.log('Monster Energy Bar: Progress bar completed and removed');
     } else {
-      width++;
-      progressBar.style.width = width + "%";
+      position += speed; // Adjust the speed dynamically
+      progressBar.style.left = position + "px";
     }
-  }, 50);
+  }, 5); // Decreased interval for smoother movement
 }
 
 injectMonsterEnergyBar();
+
