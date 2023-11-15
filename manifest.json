@@ -9,7 +9,10 @@
     "default_popup": "popup.html"
   },
   "web_accessible_resources": [
-    "assets/monster1.png"
+    "assets/monster1.png",
+    "assets/mango-loco.png",
+    "assets/pipeline-punch.png",
+    "assets/zero.png"
   ],
   "content_scripts": [
     {
