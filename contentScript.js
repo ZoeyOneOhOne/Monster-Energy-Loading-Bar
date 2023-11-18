@@ -15,10 +15,11 @@ function addProgressBar() {
   const progressBar = document.createElement("div");
   progressBar.id = "monster-energy-bar";
   progressBar.style.position = "fixed";
-  progressBar.style.top = "0px";
+  progressBar.style.top = "-30px";
   progressBar.style.left = "100px";
   progressBar.style.width = "100px";
   progressBar.style.height = "100px";
+  progressBar.style.zIndex = "9999";
 
   // Array of image filenames
   const imageFilenames = ['monster1.png', 'mango-loco.png', 'zero.png', 'pipeline-punch.png'];
