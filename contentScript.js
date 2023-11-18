@@ -15,7 +15,7 @@ function addProgressBar() {
   const progressBar = document.createElement("div");
   progressBar.id = "monster-energy-bar";
   progressBar.style.position = "fixed";
-  progressBar.style.top = "50px";
+  progressBar.style.top = "0px";
   progressBar.style.left = "100px";
   progressBar.style.width = "100px";
   progressBar.style.height = "100px";
